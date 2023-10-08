@@ -34,6 +34,11 @@
     "@aws-cdk/cx-api" "1.204.0"
     constructs "^3.3.69"
 
+"@aws-cdk/aws-amplify-alpha@^2.100.0-alpha.0":
+  version "2.100.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-amplify-alpha/-/aws-amplify-alpha-2.100.0-alpha.0.tgz#233ca163e209fc0fff7b8e2a52408fec66e3837e"
+  integrity sha512-+97zVBHSxyC8ladK7cwz4IBHV0RXUPVk2psI+TLM5NP9+neGd5pWAnnL09dVNs2X05Cjt5ZJfxL9BQfylf5R1w==
+
 "@aws-cdk/aws-amplify@^1.204.0":
   version "1.204.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-amplify/-/aws-amplify-1.204.0.tgz#8c96c2a2457b631563fc58788ff06db7b71db3f0"

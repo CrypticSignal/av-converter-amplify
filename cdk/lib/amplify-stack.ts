@@ -1,17 +1,19 @@
-import * as cdk from "@aws-cdk/core";
-import * as amplify from "@aws-cdk/aws-amplify";
+import * as cdk from "aws-cdk-lib";
+import * as amplify from "@aws-cdk/aws-amplify-alpha";
+import { Construct } from "constructs";
+import { App } from "@aws-cdk/aws-amplify-alpha";
 
 export class AmplifyStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const amplifyApp = new amplify.App(this, "av-converter", {
+    const amplifyApp = new App(this, "av-converter", {
       sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
         owner: "CrypticSignal",
         repository: "av-converter-amplify",
-        oauthToken: cdk.SecretValue.secretsManager("CDK_Amplify_Token", {
-          jsonField: "CDK_Amplify_Token",
-        }),
+        oauthToken: cdk.SecretValue.secretsManager(
+          "arn:aws:secretsmanager:eu-west-2:124051425190:secret:CDK_Amplify_Token-AIcC69"
+        ),
       }),
     });
 
