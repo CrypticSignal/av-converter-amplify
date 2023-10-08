@@ -11,9 +11,9 @@ export class AmplifyStack extends cdk.Stack {
       sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
         owner: "CrypticSignal",
         repository: "av-converter-amplify",
-        oauthToken: cdk.SecretValue.secretsManager(
-          "arn:aws:secretsmanager:eu-west-2:124051425190:secret:CDK_Amplify_Token-AIcC69"
-        ),
+        oauthToken: cdk.SecretValue.secretsManager("CDK_Amplify_Token", {
+          jsonField: "CDK_Amplify_Token",
+        }),
       }),
     });
 
