@@ -36,7 +36,7 @@ import Spinner from "react-bootstrap/Spinner";
 // Utils
 import showAlert from "../utils/showAlert";
 
-export const Home = () => {
+const Home = () => {
   const ffmpegRef = useRef(new FFmpeg());
   const ffmpeg = ffmpegRef.current;
 
@@ -151,6 +151,7 @@ export const Home = () => {
 
     console.clear();
 
+    // @ts-ignore
     const { ffmpegArgs, outputFilename } = createFFmpegArgs(
       ac3Bitrate,
       bitrateSliderValue,
