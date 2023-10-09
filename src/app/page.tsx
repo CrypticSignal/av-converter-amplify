@@ -1,5 +1,8 @@
 "use client";
 
+import { Amplify } from 'aws-amplify';
+import awsExports from '@/aws-exports';
+
 import Image from "next/image";
 import { useState, useRef } from "react";
 import { useSelector } from "react-redux";
@@ -35,6 +38,8 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Spinner from "react-bootstrap/Spinner";
 // Utils
 import showAlert from "../utils/showAlert";
+
+Amplify.configure({ ...awsExports, ssr: true });
 
 const Home = () => {
   const ffmpegRef = useRef(new FFmpeg());

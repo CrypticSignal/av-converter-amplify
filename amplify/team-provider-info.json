@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-avconverteramplify-dev-183430-authRole",
+      "UnauthRoleArn": "arn:aws:iam::124051425190:role/amplify-avconverteramplify-dev-183430-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::124051425190:role/amplify-avconverteramplify-dev-183430-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-avconverteramplify-dev-183430-deployment",
+      "UnauthRoleName": "amplify-avconverteramplify-dev-183430-unauthRole",
+      "StackName": "amplify-avconverteramplify-dev-183430",
+      "StackId": "arn:aws:cloudformation:eu-west-2:124051425190:stack/amplify-avconverteramplify-dev-183430/1b4556a0-66ca-11ee-b80b-066ca38273b8",
+      "AmplifyAppId": "d1xepnifpq2lpo"
+    }
+  }
+}
