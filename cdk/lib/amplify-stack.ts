@@ -18,5 +18,10 @@ export class AmplifyStack extends cdk.Stack {
     });
 
     amplifyApp.addBranch("main");
+
+    const amplifyResource = amplifyApp.node.findChild('Resource');
+
+    // @ts-ignore
+    amplifyResource.addPropertyOverride('Platform', 'WEB_COMPUTE')
   }
 }
