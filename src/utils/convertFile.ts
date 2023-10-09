@@ -3,6 +3,10 @@ import { toBlobURL, fetchFile } from '@ffmpeg/util';
 import { Dispatch, SetStateAction } from 'react';
 import showAlert from './showAlert';
 import reset from './reset';
+import { Amplify } from 'aws-amplify';
+import awsExports from '../aws-exports';
+
+Amplify.configure({ ...awsExports, ssr: true });
 
 const FFMPEG_CORE_VERSION = '0.12.3';
 
