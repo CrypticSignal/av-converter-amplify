@@ -3,6 +3,10 @@
 import "./globals.css";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
+import { Amplify } from 'aws-amplify';
+import awsExports from '@/aws-exports';
+
+Amplify.configure({ ...awsExports, ssr: true });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
