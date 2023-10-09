@@ -1,10 +1,6 @@
 /** @type {import('next').NextConfig} */
 
 module.exports = {
-  webpack: (config, options) => {
-    config.devtool = false;
-    return config;
-  },
   async headers() {
     return [
       {
