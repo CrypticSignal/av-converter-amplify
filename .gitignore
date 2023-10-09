@@ -1,6 +1,7 @@
 .DS_Store
 .vercel
 
+cdk.out
 next-env.d.ts
 
 /.next/
