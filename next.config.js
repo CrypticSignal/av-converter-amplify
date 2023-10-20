@@ -18,10 +18,6 @@ module.exports = {
             key: "Access-Control-Allow-Origin",
             value: "*",
           },
-          {
-            key: "X-Frame-Options",
-            value: "SAMEORIGIN",
-          },
         ],
       },
     ];
