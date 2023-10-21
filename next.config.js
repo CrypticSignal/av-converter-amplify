@@ -19,8 +19,8 @@ module.exports = {
             value: "*",
           },
           {
-            key: "TestHeader",
-            value: "From-Next-Config",
+            key: "Test-Header",
+            value: "Next-Config",
           },
           {
             key: "NextConfig",

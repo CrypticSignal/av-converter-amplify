@@ -31,10 +31,10 @@ export class AmplifyStack extends cdk.Stack {
       customResponseHeaders: [
         {
           headers: {
-            "CDK-Stack": "abc",
+            "Cdk-Stack": "abc",
             "Cross-Origin-Embedder-Policy": "require-corp",
             "Cross-Origin-Opener-Policy": "same-origin",
-            TestHeader: "CDK-Stack",
+            "Test-Header": "CDK-Stack",
           },
           pattern: "/*",
         },
