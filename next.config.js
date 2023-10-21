@@ -4,7 +4,7 @@ module.exports = {
   async headers() {
     return [
       {
-        source: "/_next/static/chunks",
+        source: "/(.*)",
         headers: [
           {
             key: "Cross-Origin-Embedder-Policy",
