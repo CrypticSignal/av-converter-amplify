@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-module.exports = {
+const nextConfig = {
   async headers() {
     return [
       {
@@ -12,7 +12,7 @@ module.exports = {
           },
           {
             key: "Cross-Origin-Opener-Policy",
-            value: "same-origin-allow-popups",
+            value: "same-origin",
           },
           {
             key: "Access-Control-Allow-Origin",
@@ -23,3 +23,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = nextConfig;
