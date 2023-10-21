@@ -23,7 +23,7 @@ module.exports = {
             value: "Next-Config",
           },
           {
-            key: "NextConfig",
+            key: "Next-Config",
             value: "abc",
           },
         ],
