@@ -12,7 +12,7 @@ module.exports = {
           },
           {
             key: "Cross-Origin-Opener-Policy",
-            value: "same-origin",
+            value: "same-origin-allow-popupss",
           },
           {
             key: "Access-Control-Allow-Origin",
