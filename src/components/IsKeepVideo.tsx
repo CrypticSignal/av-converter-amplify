@@ -1,19 +1,19 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 
 interface IsKeepVideoProps {
-  onIsKeepVideoChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setIsKeepVideo: Dispatch<SetStateAction<boolean>>;
   isKeepVideo: boolean;
 }
 
-const IsKeepVideo: React.FC<IsKeepVideoProps> = ({ onIsKeepVideoChange, isKeepVideo }) => {
+const IsKeepVideo: React.FC<IsKeepVideoProps> = ({ setIsKeepVideo, isKeepVideo }) => {
   return (
-    <div id="keep_video_div" onChange={onIsKeepVideoChange}>
+    <div id="keep_video_div">
       <br />
       <div className="form-check">
         <label className="form-check-label">
           <input
             type="radio"
-            onChange={onIsKeepVideoChange}
+            onChange={(e) => setIsKeepVideo(e.target.checked)}
             className="form-check-input"
             value="yes"
             checked={isKeepVideo}
@@ -25,7 +25,7 @@ const IsKeepVideo: React.FC<IsKeepVideoProps> = ({ onIsKeepVideoChange, isKeepVi
         <label className="form-check-label">
           <input
             type="radio"
-            onChange={onIsKeepVideoChange}
+            onChange={(e) => setIsKeepVideo(!e.target.checked)}
             className="form-check-input"
             value="no"
             checked={!isKeepVideo}

@@ -1,11 +1,11 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 
 interface QualitySliderProps {
-  onSliderMoved: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setQValue: Dispatch<SetStateAction<string>>;
   qValue: string;
 }
 
-const QualitySlider: React.FC<QualitySliderProps> = ({ onSliderMoved, qValue }) => {
+const QualitySlider: React.FC<QualitySliderProps> = ({ setQValue, qValue }) => {
   return (
     <div id="vorbis_quality_div">
       <p>Set your desired quality setting via the slider:</p>
@@ -15,7 +15,7 @@ const QualitySlider: React.FC<QualitySliderProps> = ({ onSliderMoved, qValue }) 
         min={0}
         max={10}
         step={1}
-        onChange={onSliderMoved}
+        onChange={(e) => setQValue(e.target.value)}
         value={qValue}
       />
       <span>{qValue}</span>

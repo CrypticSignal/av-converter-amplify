@@ -89,67 +89,10 @@ const Home = () => {
     setCodec(e.currentTarget.value);
   };
 
-  // AC3
-  const onAc3BitrateChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setAc3Bitrate(e.currentTarget.value);
-  };
-  // FLAC
-  const onFlacCompressionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFlacCompression(e.currentTarget.value);
-  };
-  // isKeepVideo
-  const onIsKeepVideoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.currentTarget.value === "yes" ? setIsKeepVideo(true) : setIsKeepVideo(false);
-  };
-  // H.264/AVC (MP4 or MKV container)
-  const onTranscodeVideoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.currentTarget.value === "yes" ? setTranscodeVideo(true) : setTranscodeVideo(false);
-  };
-  const onCrfChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCrfValue(e.currentTarget.value);
-  };
-  const onTranscodeAudioCheckboxChange = () => {
-    setTranscodeAudio(!transcodeAudio);
-  };
-  const onVideoContainerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setVideoContainer(e.currentTarget.value);
-  };
-  const onVideoBitrateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setVideoBitrate(e.currentTarget.value);
-  };
-  const onVideoEncodingTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setVideoEncodingType(e.currentTarget.value);
-  };
-  const onX264PresetChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setX264Preset(e.currentTarget.value);
-  };
-  // MP3
-  const onMp3EncodingTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setMp3EncodingType(e.currentTarget.value);
-  };
-  const onMp3VbrSettingChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setMp3VbrSetting(e.currentTarget.value);
-  };
-  // Opus
-  const onOpusEncodingTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setOpusEncodingType(e.currentTarget.value);
-  };
-  // Vorbis
-  const onVorbisEncodingTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setVorbisEncodingType(e.currentTarget.value);
-  };
-  const onVorbisQualitySliderMoved = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQValue(e.currentTarget.value);
-  };
-  // WAV
-  const onWavBitDepthChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setWavBitDepth(e.currentTarget.value);
-  };
-
   const bitrateSliderValue = useSelector(selectSliderValue);
 
   const onConvertClicked = async () => {
-    if (file === undefined) {
+    if (!file) {
       showAlert("You must choose an input file.", "danger");
       return;
     }
@@ -193,22 +136,22 @@ const Home = () => {
     convertFile(ffmpeg, file, ffmpegArgs, inputFilename, outputFilename, setProgress);
   };
 
-  const showFormatSettings = () => {
+  const showEncoderSettings = () => {
     switch (codec) {
       case "AAC":
         return <BitrateSlider initialValue="192" min="32" max="256" step="32" />;
       case "AC3":
         return (
           <div>
-            <AC3 onAc3BitrateChange={onAc3BitrateChange} ac3Bitrate={ac3Bitrate} />
-            <IsKeepVideo onIsKeepVideoChange={onIsKeepVideoChange} isKeepVideo={isKeepVideo} />
+            <AC3 setAc3Bitrate={setAc3Bitrate} ac3Bitrate={ac3Bitrate} />
+            <IsKeepVideo setIsKeepVideo={setIsKeepVideo} isKeepVideo={isKeepVideo} />
           </div>
         );
       case "ALAC":
         return (
           <div>
             <NoSettingsApplicable />
-            <IsKeepVideo onIsKeepVideoChange={onIsKeepVideoChange} isKeepVideo={isKeepVideo} />
+            <IsKeepVideo setIsKeepVideo={setIsKeepVideo} isKeepVideo={isKeepVideo} />
           </div>
         );
       case "CAF":
@@ -217,17 +160,14 @@ const Home = () => {
         return (
           <div>
             <DTS />
-            <IsKeepVideo onIsKeepVideoChange={onIsKeepVideoChange} isKeepVideo={isKeepVideo} />
+            <IsKeepVideo setIsKeepVideo={setIsKeepVideo} isKeepVideo={isKeepVideo} />
           </div>
         );
       case "FLAC":
         return (
           <div>
-            <FLAC
-              onFlacCompressionChange={onFlacCompressionChange}
-              flacCompression={flacCompression}
-            />
-            <IsKeepVideo onIsKeepVideoChange={onIsKeepVideoChange} isKeepVideo={isKeepVideo} />
+            <FLAC setFlacCompression={setFlacCompression} flacCompression={flacCompression} />
+            <IsKeepVideo setIsKeepVideo={setIsKeepVideo} isKeepVideo={isKeepVideo} />
           </div>
         );
       case "MKA":
@@ -242,53 +182,46 @@ const Home = () => {
         return (
           <div>
             <MP3EncodingTypeSelector
-              onEncodingTypeChange={onMp3EncodingTypeChange}
+              setMp3EncodingType={setMp3EncodingType}
               encodingType={mp3EncodingType}
-              onVbrSettingChange={onMp3VbrSettingChange}
+              setMp3VbrSetting={setMp3VbrSetting}
               vbrSetting={mp3VbrSetting}
             />
-            <IsKeepVideo onIsKeepVideoChange={onIsKeepVideoChange} isKeepVideo={isKeepVideo} />
+            <IsKeepVideo setIsKeepVideo={setIsKeepVideo} isKeepVideo={isKeepVideo} />
           </div>
         );
       case "H264":
         return (
           <H264
-            onVideoContainerChange={onVideoContainerChange}
-            onTranscodeVideoChange={onTranscodeVideoChange}
-            onCrfChange={onCrfChange}
+            setVideoContainer={setVideoContainer}
+            setTranscodeVideo={setTranscodeVideo}
+            setCrfValue={setCrfValue}
             crfValue={crfValue}
             transcodeAudio={transcodeAudio}
-            onTranscodeAudioCheckboxChange={onTranscodeAudioCheckboxChange}
+            setTranscodeAudio={setTranscodeAudio}
             transcodeVideo={transcodeVideo}
             videoContainer={videoContainer}
             videoBitrate={videoBitrate}
-            onVideoBitrateChange={onVideoBitrateChange}
+            setVideoBitrate={setVideoBitrate}
             videoEncodingType={videoEncodingType}
-            onVideoEncodingTypeChange={onVideoEncodingTypeChange}
+            setVideoEncodingType={setVideoEncodingType}
             x264Preset={x264Preset}
-            onX264PresetChange={onX264PresetChange}
+            setX264Preset={setX264Preset}
           />
         );
       case "Opus":
-        return (
-          <Opus
-            onOpusEncodingTypeChange={onOpusEncodingTypeChange}
-            encodingType={opusEncodingType}
-          />
-        );
+        return <Opus setOpusEncodingType={setOpusEncodingType} encodingType={opusEncodingType} />;
       case "Vorbis":
         return (
           <VorbisEncodingType
-            onVorbisEncodingTypeChange={onVorbisEncodingTypeChange}
+            setVorbisEncodingType={setVorbisEncodingType}
             vorbisEncodingType={vorbisEncodingType}
-            onQualitySliderMoved={onVorbisQualitySliderMoved}
+            setQValue={setQValue}
             qValue={qValue}
           />
         );
       case "WAV":
-        return (
-          <WavBitDepthSelector onBitDepthChange={onWavBitDepthChange} bitDepth={wavBitDepth} />
-        );
+        return <WavBitDepthSelector setWavBitDepth={setWavBitDepth} bitDepth={wavBitDepth} />;
       default:
         return null;
     }
@@ -317,7 +250,7 @@ const Home = () => {
         <hr />
 
         <h5>Encoder Settings</h5>
-        {showFormatSettings()}
+        {showEncoderSettings()}
         <br />
         <hr />
 

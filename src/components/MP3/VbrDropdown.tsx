@@ -1,15 +1,19 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 
 interface VbrDropdownProps {
-  onVbrSettingChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  setMp3VbrSetting: Dispatch<SetStateAction<string>>;
   vbrSetting: string;
 }
 
-const VbrDropdown: React.FC<VbrDropdownProps> = ({ onVbrSettingChange, vbrSetting }) => {
+const VbrDropdown: React.FC<VbrDropdownProps> = ({ setMp3VbrSetting, vbrSetting }) => {
   return (
     <div>
       <label htmlFor="mp3_vbr_setting">Setting:</label>
-      <select id="mp3_vbr_setting" onChange={onVbrSettingChange} value={vbrSetting}>
+      <select
+        id="mp3_vbr_setting"
+        onChange={(e) => setMp3VbrSetting(e.target.value)}
+        value={vbrSetting}
+      >
         <option disabled>Select VBR setting</option>
         <option value="0">-V 0 (~240kbps)</option>
         <option value="1">-V 1 (~220kbps)</option>

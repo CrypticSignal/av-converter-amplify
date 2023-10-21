@@ -1,16 +1,16 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 import BitrateSlider from "./BitrateSlider";
 
 interface OpusProps {
-  onOpusEncodingTypeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  setOpusEncodingType: Dispatch<SetStateAction<string>>;
   encodingType: string;
 }
 
-const Opus: React.FC<OpusProps> = ({ onOpusEncodingTypeChange, encodingType }) => {
+const Opus: React.FC<OpusProps> = ({ setOpusEncodingType, encodingType }) => {
   return (
     <div id="Opus">
       <label htmlFor="opus_encoding_type">Encoding Type</label>
-      <select onChange={onOpusEncodingTypeChange} value={encodingType}>
+      <select onChange={(e) => setOpusEncodingType(e.target.value)} value={encodingType}>
         <option disabled>Select Encoding Type</option>
         <option value="vbr">VBR (with a target bitrate)</option>
         <option value="cbr">CBR (Constant Bitrate)</option>

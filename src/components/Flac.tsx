@@ -1,18 +1,18 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 interface FlacProps {
-  onFlacCompressionChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setFlacCompression: Dispatch<SetStateAction<string>>
   flacCompression: string;
 }
 
-const Flac: React.FC<FlacProps> = ({ onFlacCompressionChange, flacCompression }) => {
+const Flac: React.FC<FlacProps> = ({ setFlacCompression, flacCompression }) => {
   return (
     <div id="flac">
       <p>Set your desired compression level via the slider:</p>
       <input
         className="slider"
         type="range"
-        onChange={onFlacCompressionChange}
+        onChange={(e) => setFlacCompression(e.target.value)}
         min={0}
         max={12}
         step={1}

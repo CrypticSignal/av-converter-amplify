@@ -1,18 +1,18 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 import BitrateSlider from "../BitrateSlider";
 import QualitySlider from "./QualitySlider";
 
 interface VorbisEncodingTypeProps {
-  onVorbisEncodingTypeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  setVorbisEncodingType: Dispatch<SetStateAction<string>>;
   vorbisEncodingType: string;
-  onQualitySliderMoved: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setQValue: Dispatch<SetStateAction<string>>;
   qValue: string;
 }
 
 const VorbisEncodingType: React.FC<VorbisEncodingTypeProps> = ({
-  onVorbisEncodingTypeChange,
+  setVorbisEncodingType,
   vorbisEncodingType,
-  onQualitySliderMoved,
+  setQValue,
   qValue,
 }) => {
   function renderComponent() {
@@ -20,7 +20,7 @@ const VorbisEncodingType: React.FC<VorbisEncodingTypeProps> = ({
       case "abr":
         return <BitrateSlider initialValue="192" min="32" max="512" step="32" />;
       case "vbr":
-        return <QualitySlider onSliderMoved={onQualitySliderMoved} qValue={qValue} />;
+        return <QualitySlider setQValue={setQValue} qValue={qValue} />;
       default:
         return null;
     }
@@ -29,7 +29,7 @@ const VorbisEncodingType: React.FC<VorbisEncodingTypeProps> = ({
     <div id="Vorbis">
       <div id="vorbis_encoding_div">
         <label>VBR setting:</label>
-        <select onChange={onVorbisEncodingTypeChange} value={vorbisEncodingType}>
+        <select onChange={(e) => setVorbisEncodingType(e.target.value)} value={vorbisEncodingType}>
           <option disabled>Select encoding type</option>
           <option value="abr">ABR (Average Bitrate)</option>
           <option value="vbr">VBR (target a quality level)</option>
