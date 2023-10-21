@@ -1,27 +1,35 @@
+import {
+  App,
+  GitHubSourceCodeProvider,
+  Platform,
+  RedirectStatus,
+} from "@aws-cdk/aws-amplify-alpha";
 import * as cdk from "aws-cdk-lib";
-import * as amplify from "@aws-cdk/aws-amplify-alpha";
 import { Construct } from "constructs";
-import { App } from "@aws-cdk/aws-amplify-alpha";
 
 export class AmplifyStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     const amplifyApp = new App(this, "av-converter", {
-      sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
+      sourceCodeProvider: new GitHubSourceCodeProvider({
         owner: "CrypticSignal",
         repository: "av-converter-amplify",
         oauthToken: cdk.SecretValue.secretsManager("CDK_Amplify_Token", {
           jsonField: "CDK_Amplify_Token",
         }),
       }),
+      autoBranchDeletion: true,
+      platform: Platform.WEB_COMPUTE,
+      customRules: [
+        {
+          source: "/<*>",
+          target: "/index.html",
+          status: RedirectStatus.NOT_FOUND_REWRITE,
+        },
+      ],
     });
 
     amplifyApp.addBranch("main");
-
-    const amplifyResource = amplifyApp.node.findChild('Resource');
-
-    // @ts-ignore
-    amplifyResource.addPropertyOverride('Platform', 'WEB_COMPUTE')
   }
 }
