@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "@aws-cdk/aws-amplify-alpha": "^2.102.0-alpha.0",
-    "@ffmpeg/core-mt": "0.12.4",
-    "@ffmpeg/ffmpeg": "0.12.7",
+    "@ffmpeg/core-mt": "0.12.3",
+    "@ffmpeg/ffmpeg": "0.12.6",
     "@ffmpeg/util": "0.12.1",
     "@reduxjs/toolkit": "^1.9.7",
     "aws-amplify": "^5.3.11",
