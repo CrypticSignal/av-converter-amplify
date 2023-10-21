@@ -18,6 +18,14 @@ module.exports = {
             key: "Access-Control-Allow-Origin",
             value: "*",
           },
+          {
+            key: "TestHeader",
+            value: "From-Next-Config",
+          },
+          {
+            key: "NextConfig",
+            value: "abc",
+          },
         ],
       },
     ];

@@ -28,6 +28,17 @@ export class AmplifyStack extends cdk.Stack {
           status: RedirectStatus.NOT_FOUND_REWRITE,
         },
       ],
+      customResponseHeaders: [
+        {
+          headers: {
+            "CDK-Stack": "abc",
+            "Cross-Origin-Embedder-Policy": "require-corp",
+            "Cross-Origin-Opener-Policy": "same-origin",
+            TestHeader: "CDK-Stack",
+          },
+          pattern: "/*",
+        },
+      ],
     });
 
     amplifyApp.addBranch("main");
