@@ -10,51 +10,25 @@ interface AC3Props {
 
 const AC3: React.FC<AC3Props> = ({ setAc3Bitrate, ac3Bitrate }) => {
   return (
-    <>
-      <div id="AC3">
-        <p>
-          The maximum number of output channels is 6. Therefore, audio with more than 6 channels
-          (such as 7.1 surround) will get downmixed to 5.1
-        </p>
-        <label htmlFor="ac3_bitrate">Bitrate:</label>
-        <select id="ac3_bitrate" onChange={(e) => setAc3Bitrate(e.target.value)} value={ac3Bitrate}>
-          <option disabled>Select a Bitrate</option>
-          <option value="192">192kbps</option>
-          <option value="384">384kbps</option>
-          <option value="448">448kbps</option>
-          <option value="640">640kbps</option>
-        </select>
-        <br />
-        <i>
-          A higher bitrate allows for potentially higher audio quality, at the expense of a larger
-          file size.
-        </i>
-      </div>
-      <h5>Output Filename</h5>
-      <input
-        type="text"
-        autoComplete="off"
-        className="form-control"
-        maxLength={200}
-        id="output_name"
-        required
-      />
-
-      <div id="converting_spinner" style={{ display: "none" }}>
-        <Spinner id="converting_btn" animation="border" /> Converting...
-      </div>
-
-      <div id="conversion_progress" style={{ display: "none" }}>
-        <ProgressBar now={progress} label={`${progress}%`} />
-      </div>
-
-      <AlertDiv />
-
-      <div id="convert_btn">
-        <br />
-        <ConvertButton onConvertClicked={onConvertClicked} />
-      </div>
-    </>
+    <div id="AC3">
+      <p>
+        The maximum number of output channels is 6. Therefore, audio with more than 6 channels (such
+        as 7.1 surround) will get downmixed to 5.1
+      </p>
+      <label htmlFor="ac3_bitrate">Bitrate:</label>
+      <select id="ac3_bitrate" onChange={(e) => setAc3Bitrate(e.target.value)} value={ac3Bitrate}>
+        <option disabled>Select a Bitrate</option>
+        <option value="192">192kbps</option>
+        <option value="384">384kbps</option>
+        <option value="448">448kbps</option>
+        <option value="640">640kbps</option>
+      </select>
+      <br />
+      <i>
+        A higher bitrate allows for potentially higher audio quality, at the expense of a larger
+        file size.
+      </i>
+    </div>
   );
 };
 
