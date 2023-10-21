@@ -8,7 +8,7 @@ module.exports = {
         headers: [
           {
             key: "Cross-Origin-Embedder-Policy",
-            value: "require-corps",
+            value: "require-corp",
           },
           {
             key: "Cross-Origin-Opener-Policy",
