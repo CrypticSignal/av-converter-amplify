@@ -1,3 +1,5 @@
+/** @type {import('next').NextConfig} */
+
 module.exports = {
   async headers() {
     return [
@@ -6,7 +8,7 @@ module.exports = {
         headers: [
           {
             key: "Cross-Origin-Embedder-Policy",
-            value: "require-corp",
+            value: "require-corps",
           },
           {
             key: "Cross-Origin-Opener-Policy",
