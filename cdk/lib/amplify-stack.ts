@@ -35,6 +35,7 @@ export class AmplifyStack extends cdk.Stack {
             "Cross-Origin-Embedder-Policy": "require-corp",
             "Cross-Origin-Opener-Policy": "same-origin",
             "Test-Header": "CDK-Stack",
+            "X-Frame-Options": "SAMEORIGIN",
           },
           pattern: "/*",
         },
