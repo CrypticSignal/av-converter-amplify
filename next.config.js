@@ -26,6 +26,10 @@ module.exports = {
             key: "Next-Config",
             value: "abc",
           },
+          {
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
+          },
         ],
       },
     ];
